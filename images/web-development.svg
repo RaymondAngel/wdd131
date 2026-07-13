@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" role="img" aria-labelledby="title description">
+  <title id="title">Web development</title>
+  <desc id="description">A browser window containing HTML code symbols.</desc>
+  <rect width="600" height="300" rx="18" fill="#dcebf5"/>
+  <rect x="45" y="40" width="510" height="220" rx="12" fill="#fff" stroke="#1f567d" stroke-width="8"/>
+  <path d="M45 85h510" stroke="#1f567d" stroke-width="8"/>
+  <circle cx="75" cy="63" r="8" fill="#f4d35e"/>
+  <circle cx="100" cy="63" r="8" fill="#1f567d"/>
+  <path d="m235 130-55 40 55 40M365 130l55 40-55 40M330 115l-60 110" fill="none" stroke="#1f567d" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

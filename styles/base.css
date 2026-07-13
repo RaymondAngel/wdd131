@@ -1,0 +1,147 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background-color: #ffffff;
+    color: #222222;
+    font-family: "Roboto", Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header,
+main,
+footer {
+    width: min(1100px, 92%);
+    margin-inline: auto;
+}
+
+header {
+    margin-top: 2rem;
+    background-color: #1f567d;
+    color: #ffffff;
+    text-align: center;
+}
+
+#course-title {
+    display: block;
+    margin: 0;
+    padding: 0.85rem 1rem;
+    font-size: 1.35rem;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    gap: 1rem;
+    padding: 0.55rem 1rem;
+    background-color: #2f2f2f;
+}
+
+nav a {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus {
+    color: #f4d35e;
+    text-decoration: underline;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 0.75rem;
+    padding: 1.25rem 3rem 1rem;
+}
+
+main h1 {
+    grid-column: 1 / -1;
+    margin: 0.25rem 0 0.75rem;
+    text-align: center;
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.card {
+    overflow: hidden;
+    min-width: 0;
+    border: 1px solid #b8b8b8;
+    border-radius: 10px;
+    background-color: #ffffff;
+}
+
+.card h2 {
+    margin: 0 0 1rem;
+    padding: 0.55rem 1rem;
+    background-color: #1f567d;
+    color: #ffffff;
+    text-align: center;
+    font-size: 1.05rem;
+}
+
+.card p,
+.card ul {
+    margin: 1rem;
+}
+
+.card:first-of-type img {
+    float: right;
+    width: 130px;
+    height: 170px;
+    margin: 0 1rem 1rem;
+    object-fit: cover;
+}
+
+.card:last-of-type {
+    display: flex;
+    flex-direction: column;
+}
+
+.card:last-of-type img {
+    display: none;
+}
+
+.card:last-of-type ul {
+    margin-block: auto;
+    padding: 2rem 1rem 2rem 2.5rem;
+}
+
+footer {
+    padding: 0.75rem 1rem;
+    background-color: #1f567d;
+    color: #ffffff;
+    text-align: center;
+}
+
+footer p {
+    margin: 0.15rem;
+}
+
+#lastModified {
+    color: #ffe66d;
+    font-size: 0.9rem;
+}
+
+@media (max-width: 700px) {
+    nav {
+        flex-direction: column;
+    }
+
+    main {
+        grid-template-columns: 1fr;
+        padding-inline: 0;
+    }
+
+    main h1 {
+        grid-column: 1;
+    }
+
+    .card:first-of-type img {
+        float: none;
+        display: block;
+        margin-inline: auto;
+    }
+}

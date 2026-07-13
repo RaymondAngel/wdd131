@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 300" role="img" aria-labelledby="title description">
+  <title id="title">Raymond Amande profile placeholder</title>
+  <desc id="description">A simple profile silhouette on a blue background.</desc>
+  <rect width="300" height="300" fill="#dcebf5"/>
+  <circle cx="150" cy="105" r="55" fill="#1f567d"/>
+  <path d="M55 285c5-70 42-110 95-110s90 40 95 110" fill="#1f567d"/>
+</svg>
