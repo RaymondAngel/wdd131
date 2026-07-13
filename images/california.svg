@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200" role="img" aria-labelledby="title desc">
+  <title id="title">California emblem</title>
+  <desc id="desc">A golden bear walking beneath a red star with California written below</desc>
+  <rect width="320" height="200" rx="12" fill="#fffaf0"/>
+  <path d="M38 38 42 50 55 50 45 58 49 71 38 63 27 71 31 58 21 50 34 50Z" fill="#a51c30"/>
+  <path d="M72 82c13-22 42-32 71-24 20 6 37 8 57 2 23-7 47 4 54 24l-13 12-5 34h-17l-4-26-29 2-5 24h-17l-6-28-45-5-7 33H89l-3-38-21-5Z" fill="#8b5a2b"/>
+  <circle cx="235" cy="74" r="4" fill="#1f1f1f"/>
+  <path d="M52 148h216" stroke="#a51c30" stroke-width="8"/>
+  <text x="160" y="181" text-anchor="middle" font-family="Arial, sans-serif" font-size="21" font-weight="700" fill="#1f567d">CALIFORNIA</text>
+</svg>

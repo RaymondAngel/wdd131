@@ -40,13 +40,17 @@ nav {
 }
 
 nav a {
+    padding: 0.25rem 0.5rem;
     color: #ffffff;
     text-decoration: none;
+    border-radius: 4px;
+    transition: color 0.2s ease, background-color 0.2s ease;
 }
 
 nav a:hover,
 nav a:focus {
     color: #f4d35e;
+    background-color: #1b1b1b;
     text-decoration: underline;
 }
 
@@ -87,6 +91,30 @@ main h1 {
     margin: 1rem;
 }
 
+.location {
+    clear: both;
+    margin: 1rem;
+    padding-top: 0.25rem;
+    border-top: 1px solid #b8b8b8;
+}
+
+.location h3 {
+    margin: 0.5rem 0 1rem;
+    text-align: center;
+}
+
+.location img {
+    float: left;
+    width: 160px;
+    height: 100px;
+    margin: 0 1rem 0.5rem 0;
+    object-fit: contain;
+}
+
+.location p {
+    margin: 0;
+}
+
 .card:first-of-type img {
     float: right;
     width: 130px;
@@ -98,10 +126,6 @@ main h1 {
 .card:last-of-type {
     display: flex;
     flex-direction: column;
-}
-
-.card:last-of-type img {
-    display: none;
 }
 
 .card:last-of-type ul {
@@ -143,5 +167,9 @@ footer p {
         float: none;
         display: block;
         margin-inline: auto;
+    }
+
+    .location img {
+        float: none;
     }
 }
