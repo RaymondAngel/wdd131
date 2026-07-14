@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Raymond Amande">
+    <meta name="description" content="Explore nine California temples in Raymond Amande's responsive WDD 131 temple album, created with accessible HTML, CSS, and JavaScript.">
+    <title>California Temple Album | Raymond Amande</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&amp;display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/temples.css">
+    <link rel="stylesheet" href="styles/temples-large.css">
+    <script src="scripts/temples.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <span class="site-title">Temple Album</span>
+        <button id="menu" type="button" aria-label="Open navigation menu" aria-expanded="false" aria-controls="navigation"></button>
+        <nav id="navigation" aria-label="Temple filters">
+            <a href="#">Home</a>
+            <a href="#">Old</a>
+            <a href="#">New</a>
+            <a href="#">Large</a>
+            <a href="#">Small</a>
+        </nav>
+    </header>
+    <main>
+        <h1>California Temples</h1>
+        <section class="temple-gallery" aria-label="California temple gallery">
+            <figure>
+                <img src="https://newsroom.churchofjesuschrist.org/media/480x270/Feather-River---Exterior.jpg" alt="White Feather River Temple with arched windows, a tall central spire, and landscaped grounds" loading="lazy" width="400" height="225">
+                <figcaption>Feather River California Temple</figcaption>
+            </figure>
+            <figure>
+                <img src="https://newsroom.churchofjesuschrist.org/media/480x270/Sacramento-California-Temple3.jpg" alt="White Sacramento Temple with an Angel Moroni-topped spire, arched entrance, and flower beds" loading="lazy" width="400" height="225">
+                <figcaption>Sacramento California Temple</figcaption>
+            </figure>
+            <figure>
+                <img src="https://www.churchofjesuschrist.org/imgs/528057ed061346d859957d68d0c43079bc738045/full/400%2C/0/default" alt="Oakland Temple's white granite exterior and five towers beneath a clear blue sky" loading="lazy" width="400" height="225">
+                <figcaption>Oakland California Temple</figcaption>
+            </figure>
+            <figure>
+                <img src="https://www.churchofjesuschrist.org/imgs/a6719d56298f7525658ed573156113c25dd665d7/full/400%2C/0/default" alt="Gray granite Fresno Temple with a gold Angel Moroni, palm trees, and flowering shrubs" loading="lazy" width="400" height="225">
+                <figcaption>Fresno California Temple</figcaption>
+            </figure>
+            <figure>
+                <img src="https://newsroom.churchofjesuschrist.org/media/480x270/Los-Angeles-California-Temple2.jpg" alt="Large white Los Angeles Temple with a tall central tower rising above green lawns and trees" loading="lazy" width="400" height="225">
+                <figcaption>Los Angeles California Temple</figcaption>
+            </figure>
+            <figure>
+                <img src="https://www.churchofjesuschrist.org/imgs/af738ed0d92670df3b4266f8bb02e7f6ac8f7b35/full/400%2C/0/default" alt="White Redlands Temple with a central spire framed by green trees beneath a cloudy sky" loading="lazy" width="400" height="225">
+                <figcaption>Redlands California Temple</figcaption>
+            </figure>
+            <figure>
+                <img src="https://www.churchofjesuschrist.org/imgs/x447w89am2b8ics024824l3bpwfa6h4e88pfv12a/full/400%2C/0/default" alt="Spanish Mission-style Yorba Linda Temple with white stone, a red tile roof, and palm landscaping" loading="lazy" width="400" height="225">
+                <figcaption>Yorba Linda California Temple</figcaption>
+            </figure>
+            <figure>
+                <img src="https://www.churchofjesuschrist.org/imgs/169c521b9ad98b6e64570e7d722f11865a9ba54a/full/400%2C/0/default" alt="Pink granite Newport Beach Temple with a single spire surrounded by palms and gardens" loading="lazy" width="400" height="225">
+                <figcaption>Newport Beach California Temple</figcaption>
+            </figure>
+            <figure>
+                <img src="https://www.churchofjesuschrist.org/imgs/f383155a1a0b99998c397c2dbd2849cf4c95e8f1/full/400%2C/0/default" alt="White San Diego Temple with multiple slender spires rising above trees and landscaped grounds" loading="lazy" width="400" height="225">
+                <figcaption>San Diego California Temple</figcaption>
+            </figure>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; <span id="currentyear"></span> Raymond Amande, California</p>
+        <p id="lastModified"></p>
+    </footer>
+</body>
+
+</html>

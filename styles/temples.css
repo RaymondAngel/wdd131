@@ -1,0 +1,114 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: #1f2933;
+    background-color: #f7f9fb;
+    font-family: "Roboto", Arial, sans-serif;
+}
+
+header {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: center;
+    padding: 1rem;
+    color: #fff;
+    background-color: #173f5f;
+}
+
+.site-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+}
+
+#menu {
+    border: 0;
+    color: #fff;
+    background: transparent;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+#menu::before {
+    content: "☰";
+}
+
+#menu.open::before {
+    content: "✕";
+}
+
+nav {
+    display: none;
+    grid-column: 1 / -1;
+    flex-direction: column;
+    margin-top: 1rem;
+}
+
+nav.open {
+    display: flex;
+}
+
+nav a {
+    padding: 0.8rem;
+    color: #fff;
+    text-align: center;
+    text-decoration: none;
+}
+
+nav a:hover,
+nav a:focus-visible {
+    color: #173f5f;
+    background-color: #f4c95d;
+}
+
+main {
+    width: min(100% - 2rem, 1200px);
+    margin: 0 auto;
+    padding: 1.5rem 0;
+}
+
+h1 {
+    margin-top: 0;
+    text-align: center;
+}
+
+.temple-gallery {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+figure {
+    margin: 0;
+    overflow: hidden;
+    border-radius: 0.4rem;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+}
+
+figure img {
+    display: block;
+    width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+}
+
+figcaption {
+    padding: 0.8rem;
+    font-weight: 500;
+    text-align: center;
+}
+
+footer {
+    padding: 1rem;
+    color: #fff;
+    background-color: #173f5f;
+    text-align: center;
+}
+
+footer p {
+    margin: 0.35rem;
+}
