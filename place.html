@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Raymond Amande">
+    <meta name="description" content="Discover the Philippines through key facts, a responsive photograph, and local weather information.">
+    <title>Philippines | Country Page</title>
+    <link rel="stylesheet" href="styles/place.css">
+    <script src="scripts/place.js" defer></script>
+</head>
+<body>
+    <header>
+        <h1>Philippines</h1>
+    </header>
+
+    <main>
+        <div class="hero">
+            <picture>
+                <source srcset="images/place-large.webp" media="(min-width: 1000px)">
+                <source srcset="images/place-medium.webp" media="(min-width: 600px)">
+                <img src="images/place-small.webp" alt="Alabang Philippines Temple beneath a bright blue sky" width="1500" height="750">
+            </picture>
+
+            <section class="card data">
+                <h2>Data</h2>
+                <dl>
+                    <div><dt>Area:</dt><dd>300,000 km²</dd></div>
+                    <div><dt>Population:</dt><dd>117 million</dd></div>
+                    <div><dt>Capital:</dt><dd>Manila</dd></div>
+                    <div><dt>Languages:</dt><dd>Filipino, English</dd></div>
+                    <div><dt>Currency:</dt><dd>Philippine peso</dd></div>
+                    <div><dt>Time Zone:</dt><dd>UTC+8</dd></div>
+                    <div><dt>Calling Code:</dt><dd>+63</dd></div>
+                    <div><dt>Internet TLD:</dt><dd>.ph</dd></div>
+                </dl>
+            </section>
+
+            <section class="card weather">
+                <h2>Weather</h2>
+                <img class="weather-icon" src="images/weather-partly-cloudy.svg" alt="Partly cloudy">
+                <dl>
+                    <div><dt>Temperature:</dt><dd><span id="temperature">9</span> °C</dd></div>
+                    <div><dt>Conditions:</dt><dd>Partly Cloudy</dd></div>
+                    <div><dt>Wind:</dt><dd><span id="wind-speed">10</span> km/h</dd></div>
+                    <div><dt>Wind Chill:</dt><dd id="wind-chill">N/A</dd></div>
+                </dl>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy;<span id="currentyear"></span> Raymond Amande | Philippines</p>
+        <p id="lastModified"></p>
+    </footer>
+</body>
+</html>
