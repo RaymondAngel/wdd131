@@ -174,6 +174,304 @@ The broader lesson is to keep related course information encapsulated in one
 stable object structure and use focused functions to transform that data into
 accessible HTML.
 
+## Functional Programming and JavaScript Array Methods
+
+- Prefer declarative array methods when they express the intended data
+  transformation more clearly than a manual loop.
+- Keep data transformations predictable by avoiding unnecessary mutation of
+  the original array and its values.
+- Give callback parameters descriptive names that communicate what each array
+  item represents.
+- Store the returned result of `filter()`, `map()`, or `reduce()` when it will be
+  used later; these methods do not automatically replace the original array.
+- Keep callback functions focused on one condition, transformation, or
+  accumulation task.
+- Do not use `filter()`, `map()`, or `reduce()` only because they are available.
+  Choose the method whose purpose matches the desired result.
+
+### `filter()`
+
+- Use `array.filter()` to create a new array containing only the elements that
+  satisfy a condition.
+- The callback must return a truthy value to keep an item or a falsy value to
+  exclude it.
+- The callback can receive three arguments: the current element, its index, and
+  the source array.
+- An optional second argument to `filter()` can provide the callback's `this`
+  value. Prefer an arrow function or a clearly scoped regular function when
+  that makes the intended context easier to understand.
+- `filter()` does not modify the original array unless the callback deliberately
+  mutates shared values.
+- The returned array is a shallow copy. Primitive values are copied, but object
+  elements still refer to the same underlying objects as the source array.
+- The resulting array can contain fewer items than the original, the same
+  number of items, or no items.
+- When no items satisfy the condition, `filter()` returns an empty array.
+- The callback runs only for indexes that have assigned values. Empty slots in
+  sparse arrays are skipped.
+- The callback's third argument refers to the array being filtered, not the new
+  result array under construction.
+- Avoid side effects inside a filter callback. A predicate should normally test
+  one item and return a Boolean-like result.
+- Use named predicate functions when the condition is complex or reusable.
+- Validate both type and value when filtering untrusted or inconsistent object
+  data. For numeric identifiers, `Number.isFinite()` can prevent strings,
+  `null`, missing values, and `NaN` from passing as valid numbers.
+- Normalize both the source text and query when implementing
+  case-insensitive searches.
+- Although `filter()` is generic and can operate on array-like objects with a
+  `length` property and integer-indexed values, use it directly on arrays unless
+  working with an array-like structure is intentional.
+- Example: select names beginning with the letter B.
+
+```js
+const namesB = names.filter((name) => name.startsWith("B"));
+```
+
+Example with a reusable predicate:
+
+```js
+function isAtLeastTen(value) {
+    return value >= 10;
+}
+
+const filteredValues = [12, 5, 8, 130, 44].filter(isAtLeastTen);
+// [12, 130, 44]
+```
+
+Example case-insensitive search:
+
+```js
+function filterItems(items, query) {
+    const normalizedQuery = query.toLowerCase();
+
+    return items.filter((item) =>
+        item.toLowerCase().includes(normalizedQuery)
+    );
+}
+```
+
+Example validation of objects:
+
+```js
+const validItems = items.filter(
+    (item) => Number.isFinite(item.id) && item.id !== 0
+);
+```
+
+### `map()`
+
+- Use `array.map()` to transform every item in an array and return the
+  transformed values in a new array.
+- The callback can receive three arguments: the current element, its index, and
+  the source array.
+- An optional second argument to `map()` can provide the callback's `this`
+  value. Prefer an arrow function or a clearly scoped regular function when
+  that makes the intended context easier to understand.
+- Return the transformed value explicitly from the callback when using a block
+  body.
+- `map()` does not modify the original array unless the callback itself mutates
+  referenced objects.
+- The new array always has the same number of items as the source array.
+- The returned array is a shallow result. If a callback returns an existing
+  object, both arrays refer to that same object. Use object or array spread when
+  creating changed copies.
+- If a callback returns nothing, the corresponding result is `undefined`.
+  `map()` does not remove that item.
+- To exclude items, use `filter()` before or after mapping as appropriate. Use
+  `flatMap()` when one operation intentionally transforms an item into either a
+  value or an empty array.
+- Do not use `map()` merely for side effects or ignore its returned array. Use
+  `forEach()` or `for...of` when the purpose is only to perform an action.
+- Keep mapping callbacks pure when practical. Calculate unrelated totals with
+  `reduce()` instead of changing outside state from inside `map()`.
+- Avoid mutating source objects inside a mapping callback unless mutation is
+  explicitly intended and documented.
+- The callback's third argument refers to the array being mapped, which may be
+  an intermediate array in a method chain. It does not refer to the result array
+  being constructed.
+- Sparse arrays remain sparse after mapping. The callback is not called for
+  unassigned slots, and those slots remain empty in the result.
+- `map()` is generic and can work with array-like objects that have a `length`
+  property and integer-indexed values.
+- For DOM collections such as a `NodeList`, prefer converting to an array with
+  `Array.from(collection)` or spread syntax when supported, then call `map()`.
+- Be careful when passing an existing function directly as the callback.
+  `map()` supplies element, index, and array arguments, which may accidentally
+  fill optional parameters that have a different meaning.
+- In particular, do not use `strings.map(parseInt)`. `parseInt()` interprets
+  the index supplied by `map()` as its radix argument.
+- Example: transform each name into its character count.
+
+```js
+const namesLength = names.map((name) => name.length);
+```
+
+Example numeric transformation:
+
+```js
+const doubled = [1, 4, 9, 16].map((number) => number * 2);
+// [2, 8, 18, 32]
+```
+
+Example creating updated object copies without mutating the originals:
+
+```js
+const productsWithPrice = products.map((product) => ({
+    ...product,
+    price: 100
+}));
+```
+
+Safe conversion of numeric strings:
+
+```js
+const integers = ["1", "2", "3"].map(
+    (value) => Number.parseInt(value, 10)
+);
+
+const numbers = ["1", "2", "3"].map(Number);
+```
+
+Choose between `Number()` and `Number.parseInt()` intentionally:
+
+- `Number("2.2e2")` returns `220`.
+- `Number.parseInt("2.2e2", 10)` returns `2`.
+
+Example mapping a DOM collection:
+
+```js
+const selectedOptions = document.querySelectorAll("select option:checked");
+const selectedValues = Array.from(
+    selectedOptions,
+    (option) => option.value
+);
+```
+
+### `reduce()`
+
+- Use `array.reduce()` when an array needs to become one accumulated result,
+  such as a total, average, object, or grouped collection.
+- The reducer callback can receive the accumulator, current value, current
+  index, and source array.
+- Return the updated accumulator during every iteration.
+- The callback's return value becomes the accumulator passed into the next
+  callback invocation. The final accumulator becomes the value returned by
+  `reduce()`.
+- Provide an explicit initial accumulator value when practical. This makes the
+  result type clear, ensures processing begins at index `0`, and prevents errors
+  when reducing an empty array.
+- Choose an initial value that matches the intended result type: `0` for a
+  numeric sum, `""` for a string, `[]` for an array, or an appropriate object
+  for keyed results.
+- Without an initial value, the first assigned array element becomes the
+  accumulator and iteration begins with the next assigned element.
+- Calling `reduce()` on an empty array without an initial value throws a
+  `TypeError`.
+- Reducing an empty array with an initial value returns that initial value
+  without calling the callback.
+- Reducing a one-item array without an initial value returns that item without
+  calling the callback.
+- `reduce()` does not accept a `thisArg`. Do not design reducer callbacks around
+  a configurable `this` context.
+- Calculate an average by dividing the accumulated total by the array length.
+- Decide how an empty array should be handled before dividing by its length.
+- Sparse-array holes are skipped, but assigned `undefined` values are processed.
+  A numeric operation involving `undefined` can produce `NaN`.
+- `reduce()` is generic and can operate on intentional array-like objects with
+  a `length` property and integer-indexed values.
+- Use semantic accumulator and item names such as `total`, `countByName`, and
+  `course` instead of vague names when the reducer is not trivial.
+- Keep reducers readable. A straightforward `for...of` loop is preferable when
+  it communicates a complex accumulation more clearly.
+- For immutable accumulation, return a new array or object rather than mutating
+  the previous accumulator.
+- Be aware that copying a growing array or object on every iteration can create
+  excessive memory use and quadratic runtime. For large collections, a clear
+  loop that mutates a locally owned result may be safer and faster.
+- If intentionally mutating an accumulator inside `reduce()`, always return that
+  accumulator so the next iteration does not receive `undefined`.
+- Use `reduce()` for natural accumulations such as numeric totals, function
+  composition, or deliberately sequenced operations. Do not force unrelated
+  tasks into a reducer.
+- Example: calculate the average character count of a nonempty array of names.
+
+```js
+const averageNameLength =
+    names.reduce((total, name) => total + name.length, 0) / names.length;
+```
+
+Example sum:
+
+```js
+const total = [1, 2, 3, 4].reduce(
+    (sum, value) => sum + value,
+    0
+);
+// 10
+```
+
+Example summing a property from objects:
+
+```js
+const items = [{ amount: 1 }, { amount: 2 }, { amount: 3 }];
+const totalAmount = items.reduce(
+    (total, item) => total + item.amount,
+    0
+);
+// 6
+```
+
+### Prefer a Clearer Specialized Operation When Available
+
+Before using `reduce()`, check whether a method with a more specific purpose
+communicates the operation better:
+
+- Flatten nested arrays with `flat()`.
+- Transform and flatten in one operation with `flatMap()`.
+- Remove duplicate primitive values with `Array.from(new Set(values))` or
+  `[...new Set(values)]`.
+- Select matching values with `filter()`.
+- Locate a value or index with `find()` or `findIndex()`.
+- Test whether any value matches with `some()`.
+- Test whether every value matches with `every()`.
+- Group values with `Object.groupBy()` when the required browser support or
+  project tooling is available.
+
+These specialized methods may also stop early when the answer is known, as
+`find()`, `some()`, and `every()` do, whereas `reduce()` normally processes the
+entire collection.
+
+Equivalent accumulation with a loop:
+
+```js
+let result = initialValue;
+
+for (const item of items) {
+    result = update(result, item);
+}
+```
+
+Use the version that is easiest for the project team to understand and maintain.
+
+### WDD 131 Array-Methods Activity Pattern
+
+Given:
+
+```js
+const names = ["Nancy", "Blessing", "Jorge", "Svetlana", "Bob"];
+```
+
+the Week 4 activity expects these concepts and results:
+
+1. `filter()` creates `namesB`, containing `"Blessing"` and `"Bob"`.
+2. `map()` creates `namesLength`, producing `[5, 8, 5, 8, 3]`.
+3. `reduce()` totals the name lengths so the calculated average is `5.8`.
+
+The broader lesson is to create clear data-processing pipelines in which
+`filter()` selects values, `map()` transforms values, and `reduce()` combines
+values into a final result.
+
 ## Review Checklist
 
 Before considering a page finished:

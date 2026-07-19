@@ -1,0 +1,32 @@
+@media screen and (min-width: 700px) {
+    header {
+        grid-template-columns: auto 1fr;
+    }
+
+    #menu {
+        display: none;
+    }
+
+    nav {
+        display: flex;
+        grid-column: auto;
+        flex-direction: row;
+        justify-content: flex-end;
+        gap: 0.25rem;
+        margin-top: 0;
+    }
+
+    .filter-button {
+        min-width: 5rem;
+    }
+
+    .temple-gallery {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media screen and (min-width: 1000px) {
+    .temple-gallery {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
