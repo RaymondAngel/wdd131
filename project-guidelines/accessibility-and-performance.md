@@ -113,6 +113,67 @@ optional finishing steps.
 - Ensure essential content and navigation remain understandable if a
   nonessential script fails.
 
+## JavaScript Objects and Dynamic Content
+
+- Use JavaScript objects to group related data and functionality instead of
+  maintaining related values in parallel or multidimensional arrays.
+- Treat an object as a collection of `key: value` pairs.
+- Use clear, descriptive property names so the object's purpose and structure
+  are easy to understand and maintain.
+- Remember that an object key is a string. It may be written without quotation
+  marks when it is a valid JavaScript identifier, but keys containing spaces
+  must be quoted.
+- Object values may be primitives, arrays, other objects, or functions.
+- Refer to keys that hold data as properties and keys that hold functions as
+  methods.
+- Use nested objects when one property contains another related group of named
+  values, such as an address.
+- Use arrays inside objects when a property can contain multiple related items,
+  such as course sections or hobbies.
+- Prefer dot notation for ordinary property access because it is concise and
+  readable, for example `course.title`.
+- Use bracket notation when a property name is dynamic, stored in a variable,
+  contains spaces, or cannot be accessed conveniently with dot notation.
+- Access nested data one level at a time with dot notation, bracket notation,
+  or an appropriate combination of both.
+- Update object properties by assigning a new value, for example
+  `person.age = 31`.
+- Within an object method, use `this` when referring to another property on the
+  same object when that method's calling context supports it.
+- Use functions to separate data processing and rendering responsibilities
+  rather than placing all work in global statements.
+- Pass the object a function needs as a parameter instead of making the
+  function depend unnecessarily on a global variable.
+- Use descriptive function names that state their responsibility, such as
+  `setCourseInformation()` and `renderSections()`.
+- When displaying object data, select the intended HTML element and update it
+  through the DOM.
+- Render arrays of related objects by iterating over the array and producing a
+  consistent HTML structure for every item.
+- When object data is tabular, render it as semantic table rows and preserve the
+  accessible table-header relationships described elsewhere in this guide.
+- Treat external data as text when inserting it into the page. Prefer safe DOM
+  APIs such as `textContent` unless intentionally creating trusted markup.
+
+### WDD 131 Course-Object Activity Pattern
+
+The Week 4 activity teaches the following data and rendering pattern:
+
+1. Represent a course with an object containing `code`, `title`, and `credits`.
+2. Add a `sections` property whose value is an array containing at least two
+   section objects.
+3. Give every section object the same properties: `section`, `enrolled`, and
+   `instructor`.
+4. Create `setCourseInformation(course)` and pass the course object into it.
+5. Use dot notation inside that function to display the course code and title
+   in the element whose ID is `courseName`.
+6. Create `renderSections()` to display the section objects as rows in the
+   table whose ID is `sections`.
+
+The broader lesson is to keep related course information encapsulated in one
+stable object structure and use focused functions to transform that data into
+accessible HTML.
+
 ## Review Checklist
 
 Before considering a page finished:
