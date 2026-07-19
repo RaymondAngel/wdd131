@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An accessible comparison table for ACME Wildwest service plans.">
+    <meta name="author" content="Raymond Amande">
+    <title>ACME Wildwest Services</title>
+    <link rel="stylesheet" href="styles/acme-wild-west.css">
+</head>
+<body>
+    <main>
+        <h1>ACME Wildwest Services</h1>
+
+        <div class="table-container">
+            <table>
+                <caption>Table 1: Account Feature Comparison</caption>
+                <thead>
+                    <tr>
+                        <th colspan="4" scope="colgroup">ACME Wildwest Services</th>
+                    </tr>
+                    <tr>
+                        <td class="blank"></td>
+                        <th scope="col">Basic</th>
+                        <th scope="col">Premium</th>
+                        <th scope="col">Deluxe</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">Feature 1</th>
+                        <td><span aria-hidden="true">✔️</span><span class="visually-hidden">Included</span></td>
+                        <td><span aria-hidden="true">✔️</span><span class="visually-hidden">Included</span></td>
+                        <td><span aria-hidden="true">✔️</span><span class="visually-hidden">Included</span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Feature 2</th>
+                        <td><span aria-hidden="true">❌</span><span class="visually-hidden">Not included</span></td>
+                        <td><span aria-hidden="true">✔️</span><span class="visually-hidden">Included</span></td>
+                        <td><span aria-hidden="true">✔️</span><span class="visually-hidden">Included</span></td>
+                    </tr>
+                    <tr>
+                        <th scope="row">Feature 3</th>
+                        <td><span aria-hidden="true">❌</span><span class="visually-hidden">Not included</span></td>
+                        <td><span aria-hidden="true">❌</span><span class="visually-hidden">Not included</span></td>
+                        <td><span aria-hidden="true">✔️</span><span class="visually-hidden">Included</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
