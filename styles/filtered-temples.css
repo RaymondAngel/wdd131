@@ -69,25 +69,28 @@ nav.open {
     display: flex;
 }
 
-.filter-button {
+.filter-link {
+    display: block;
     min-height: 2.75rem;
     padding: 0.7rem 1rem;
     border: 2px solid transparent;
     color: #ffffff;
     background-color: transparent;
-    font: inherit;
     font-weight: 500;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
     cursor: pointer;
 }
 
-.filter-button:hover,
-.filter-button:focus-visible,
-.filter-button.active {
+.filter-link:hover,
+.filter-link:focus-visible,
+.filter-link.active {
     color: var(--primary-dark);
     background-color: var(--accent);
 }
 
-.filter-button:focus-visible,
+.filter-link:focus-visible,
 #menu:focus-visible {
     outline: 3px solid #ffffff;
     outline-offset: 2px;

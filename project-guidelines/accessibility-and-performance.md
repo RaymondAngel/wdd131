@@ -472,6 +472,210 @@ The broader lesson is to create clear data-processing pipelines in which
 `filter()` selects values, `map()` transforms values, and `reduce()` combines
 values into a final result.
 
+## Data-Driven Galleries and Interactive Filtering
+
+- Preserve a working version before enhancing an existing assignment. Copy the
+  original HTML and related CSS and JavaScript files instead of overwriting the
+  earlier deliverable when the instructions require a new version.
+- Rename copied files according to the assignment and update every stylesheet,
+  script, image, and navigation reference to point to the renamed files.
+- Keep related records in one array of consistently shaped objects rather than
+  repeating static HTML for every item.
+- Give every object the same required property names and compatible value types.
+  For example, store measurements as numbers rather than formatted strings so
+  they can be compared and sorted reliably.
+- Verify added records against a credible source and retain the source
+  information needed to check names, dates, measurements, and media rights.
+- Treat the data array as the source of truth. Generate the visible cards from
+  the data instead of maintaining duplicate values in both JavaScript and HTML.
+- Remove obsolete static cards when JavaScript becomes responsible for
+  rendering them. Leave one clearly identified empty container for the dynamic
+  content.
+- Separate responsibilities into focused functions:
+  - create one card from one object;
+  - render a supplied array of objects;
+  - select or filter the requested data;
+  - update the interface state and result announcement.
+- Use `DocumentFragment`, `replaceChildren()`, or another deliberate batch
+  update when replacing multiple cards to avoid unnecessary repeated page
+  updates.
+- Prefer DOM creation and `textContent` for data-driven content. Use
+  `innerHTML` only for intentionally trusted markup with a clear reason.
+
+### Card Content and Semantics
+
+- Use a semantic repeated-content element such as `<article>` when each card is
+  a self-contained entry.
+- Give every card a heading so screen-reader users can navigate among entries.
+- Use semantic structures such as a description list when displaying repeated
+  label-and-value metadata.
+- Format numeric values for readers only at display time, for example with
+  `toLocaleString()`. Keep the underlying value numeric.
+- Include meaningful image alternative text based on the represented item, not
+  a file name or generic phrase such as "image."
+- Give images intrinsic `width` and `height` values and responsive CSS.
+- Apply `loading="lazy"` to dynamically created images that are not critical
+  above-the-fold content.
+- When remote images are allowed, remember that third-party latency and file
+  size can reduce performance scores. Prefer properly licensed, optimized local
+  copies when the project permits and the benefit justifies the added files.
+- Respect copyright and the usage terms of all external data and images.
+
+### Filter Controls
+
+- Use buttons for same-page filtering because filtering performs an action; do
+  not use placeholder links whose destination is `#`.
+- Course-specific exception: when an assignment or automated auditor requires
+  the filters to remain main-navigation links, preserve real `<a>` elements
+  with unique, meaningful `href` fragment destinations. Use `aria-current` for
+  the active link instead of the button-only `aria-pressed` attribute.
+- Give each filter a stable machine-readable value, such as a `data-filter`
+  attribute, while keeping its visible label understandable.
+- Register event listeners instead of inline event-handler attributes.
+- Use `array.filter()` to derive a new displayed collection without changing the
+  master data array.
+- Translate written boundaries exactly:
+  - "before 1900" means `< 1900`;
+  - "after 2000" means `> 2000`;
+  - "larger than 90,000" means `> 90000`;
+  - "smaller than 10,000" means `< 10000`.
+- Do not accidentally include boundary values when the requirement says
+  "before," "after," "larger than," or "smaller than."
+- Provide an unfiltered control, commonly Home or All, that restores the entire
+  source array.
+- Parse dates deliberately when only a year is needed. If the stored format is
+  known, extracting and converting its year is more predictable than relying on
+  implementation-dependent date-string parsing.
+- Keep filter definitions in one clear mapping when several controls select
+  different predicates and headings.
+- Update the page heading or other visible context so users know which filter is
+  active.
+- Expose active state programmatically with a suitable pattern such as
+  `aria-pressed` on toggle-like filter buttons.
+- Do not communicate the selected filter through color alone.
+- Announce changed result counts through a concise `aria-live="polite"` status
+  when filtering substantially replaces page content.
+- Preserve keyboard access, visible focus indicators, and adequate target sizes
+  for every filter control.
+- If filters are inside a collapsible mobile menu, keep `aria-expanded`,
+  `aria-controls`, the accessible label, and the visible open/close state
+  synchronized.
+
+### Example Data-Driven Rendering Pattern
+
+```js
+const records = [
+    {
+        name: "Example",
+        year: 2005,
+        area: 11500,
+        imageUrl: "https://example.com/image.jpg"
+    }
+];
+
+function createCard(record) {
+    const card = document.createElement("article");
+    const heading = document.createElement("h2");
+    const image = document.createElement("img");
+
+    heading.textContent = record.name;
+    image.src = record.imageUrl;
+    image.alt = record.name;
+    image.loading = "lazy";
+    image.width = 400;
+    image.height = 250;
+
+    card.append(heading, image);
+    return card;
+}
+
+function displayRecords(recordsToDisplay) {
+    const fragment = document.createDocumentFragment();
+
+    recordsToDisplay.forEach((record) => {
+        fragment.appendChild(createCard(record));
+    });
+
+    document.querySelector("#cards").replaceChildren(fragment);
+}
+```
+
+### Testing Dynamic Filtered Pages
+
+- Render the page locally throughout development rather than waiting until the
+  end.
+- Check the console for JavaScript syntax errors, runtime errors, failed
+  resources, and unexpected warnings.
+- Verify the initial unfiltered state and activate every filter individually.
+- Confirm both the identities and number of records returned by every filter,
+  especially records near boundary values.
+- Return to the unfiltered state after testing the filtered states.
+- Confirm that dynamically created images have useful alternative text,
+  dimensions, and lazy-loading attributes in the rendered DOM.
+- Test keyboard operation and focus visibility for the menu and every filter.
+- Test narrow and wide layouts, including the mobile navigation state.
+- Run Lighthouse Accessibility, Best Practices, and SEO diagnostics in both
+  mobile and desktop modes. A private or incognito window can reduce extension
+  interference.
+- Run the course audit or validator required by the assignment and correct
+  relevant HTML and CSS errors.
+- Treat publishing, committing, pushing, forum posting, and submission as
+  separate release actions. Perform them only when the user explicitly
+  authorizes them and the project is ready.
+
+### Local Files, Published Pages, and Audit Results
+
+- Identify which version an audit tool is testing before changing code. A
+  course auditor given a GitHub Pages URL evaluates the published site, not
+  unsaved or unpushed local files.
+- Do not assume a local fix is live. Compare the deployed HTML, CSS, and
+  JavaScript with the local files when an auditor continues reporting an issue
+  that has already been corrected locally.
+- Use details in an audit report as evidence of which version it evaluated. For
+  example, an old selector name or an obsolete element count indicates that the
+  deployed page is stale.
+- Verify both the HTTP response and relevant rendered or source structure of
+  the published page when diagnosing deployment differences.
+- Keep local verification and deployed verification distinct:
+  1. confirm the local code is correct;
+  2. obtain authorization for commit and push;
+  3. publish the intended commit;
+  4. allow the hosting service time to deploy;
+  5. reload the live page without stale cache;
+  6. rerun the audit against the published URL.
+- A successful local browser test does not prove that GitHub Pages contains the
+  same version.
+- Content marked "Review" or "Requires Content Review" by an audit tool is not
+  necessarily a failure. Distinguish informational manual-review notices from
+  explicit issue or failure indicators.
+- Automated audits may enforce course-specific structural conventions that
+  differ from general interface guidance. Satisfy the explicit assignment and
+  auditor requirement while preserving accessibility with the correct
+  semantics and ARIA state for the required element type.
+- Never commit, push, publish, post, or submit merely to clear an audit warning
+  unless the user has explicitly authorized that external action.
+
+### WDD 131 Picture Album Enhancement Pattern
+
+The Week 4 temple-album assignment specifically expects:
+
+1. A copied page named `filtered-temples.html` with appropriately renamed CSS
+   and JavaScript dependencies.
+2. A `temples` array containing the supplied records plus at least three
+   additional objects with the same properties.
+3. JavaScript-generated cards containing temple name, location, dedication
+   date, total floor area, and image.
+4. Native lazy loading and meaningful alternative text on every temple image.
+5. Filters with these exact conditions:
+   - Old: dedication year `< 1900`;
+   - New: dedication year `> 2000`;
+   - Large: area `> 90000`;
+   - Small: area `< 10000`;
+   - Home: all temple objects.
+6. A JavaScript-generated copyright year and document last-modified date.
+7. Local rendering, console review, mobile and desktop Lighthouse checks, and
+   the required course page audit before release.
+
 ## Review Checklist
 
 Before considering a page finished:

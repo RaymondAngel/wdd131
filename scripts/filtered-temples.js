@@ -92,7 +92,7 @@ const temples = [
 const templeCards = document.querySelector("#temple-cards");
 const albumTitle = document.querySelector("#album-title");
 const filterStatus = document.querySelector("#filter-status");
-const filterButtons = document.querySelectorAll(".filter-button");
+const filterLinks = document.querySelectorAll(".filter-link");
 const menuButton = document.querySelector("#menu");
 const navigation = document.querySelector("#navigation");
 const currentYear = document.querySelector("#currentyear");
@@ -179,10 +179,15 @@ function applyFilter(filterName) {
 
     displayTemples(filteredTemples, selectedFilter.title);
 
-    filterButtons.forEach((button) => {
-        const isActive = button.dataset.filter === filterName;
-        button.classList.toggle("active", isActive);
-        button.setAttribute("aria-pressed", isActive);
+    filterLinks.forEach((link) => {
+        const isActive = link.dataset.filter === filterName;
+        link.classList.toggle("active", isActive);
+
+        if (isActive) {
+            link.setAttribute("aria-current", "page");
+        } else {
+            link.removeAttribute("aria-current");
+        }
     });
 }
 
@@ -203,9 +208,9 @@ menuButton.addEventListener("click", () => {
     );
 });
 
-filterButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-        applyFilter(button.dataset.filter);
+filterLinks.forEach((link) => {
+    link.addEventListener("click", () => {
+        applyFilter(link.dataset.filter);
         closeNavigation();
     });
 });
