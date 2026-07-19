@@ -1,0 +1,66 @@
+:root {
+    --background: #f5f7fa;
+    --foreground: #102a43;
+    --footer-background: #243b53;
+    --footer-foreground: #ffffff;
+    --image-shadow: rgb(16 42 67 / 25%);
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: var(--foreground);
+    background-color: var(--background);
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+main {
+    padding: 1rem;
+}
+
+h1 {
+    text-align: center;
+}
+
+main img {
+    display: block;
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    margin: 2rem auto;
+    background-color: #000000;
+    box-shadow: 0 0.25rem 0.75rem var(--image-shadow);
+    animation: fade-from-black 1.5s ease-out;
+}
+
+footer {
+    padding: 1rem;
+    color: var(--footer-foreground);
+    background-color: var(--footer-background);
+    text-align: center;
+}
+
+footer p {
+    margin: 0.35rem;
+}
+
+@keyframes fade-from-black {
+    from {
+        opacity: 0;
+        filter: brightness(0);
+    }
+
+    to {
+        opacity: 1;
+        filter: brightness(1);
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    main img {
+        animation: none;
+    }
+}
