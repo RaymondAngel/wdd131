@@ -37,20 +37,11 @@ header {
   gap: 1rem;
 }
 
-.logo {
-  display: grid;
-  width: 74px;
-  height: 58px;
-  place-items: end center;
-  border-bottom: 8px solid var(--bronze);
-  background: linear-gradient(145deg, transparent 42%, var(--sand) 43% 52%, transparent 53%);
-  font-family: "Montserrat", Arial, sans-serif;
-  font-weight: 700;
-}
-
-.logo span {
-  padding: 0 0.2rem;
-  background: var(--navy);
+.official-logo {
+  width: 76px;
+  height: 68px;
+  flex: 0 0 76px;
+  object-fit: contain;
 }
 
 .company-name,
@@ -257,8 +248,9 @@ footer p {
     align-items: flex-start;
   }
 
-  .logo {
+  .official-logo {
     width: 60px;
+    height: 54px;
     flex: 0 0 60px;
   }
 

@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Website planning document for High Desert Development, a full-service construction contractor.">
+  <meta name="description" content="Website planning document for High Desert Development, a residential, commercial, utility, and concrete construction company.">
   <meta name="author" content="Raymond Amande">
   <title>High Desert Development | Website Plan</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14,7 +14,7 @@
 <body>
   <header>
     <div class="brand">
-      <div class="logo" aria-hidden="true"><span>HDD</span></div>
+      <img class="official-logo" src="images/high-desert-development-logo.png" width="157" height="140" alt="High Desert Development General Construction Services logo">
       <div>
         <p class="company-name">High Desert Development</p>
         <p class="tagline">Built with integrity. Finished with distinction.</p>
@@ -28,126 +28,112 @@
     <section>
       <h2>Site Name</h2>
       <p><strong>High Desert Development</strong></p>
-      <p>This name clearly identifies the contractor and connects the company to the High Desert community it serves. “Development” is broad enough to represent construction, remodeling, and multiple skilled trades while allowing the company to grow.</p>
-      <p><strong>Optional domain:</strong> highdesertdevelopment.com (availability has not been verified and a domain is not required for this project).</p>
+      <p>The name clearly identifies the company and connects it to the High Desert community it serves. “Development” is broad enough to represent construction, remodeling, utilities, site preparation, and multiple skilled trades while allowing the company to grow.</p>
+      <p><strong>Existing company domain:</strong> <a href="https://highdesertdevelopment.com/">highdesertdevelopment.com</a>. The WDD 131 assignment version will first be published through the student’s GitHub Pages repository.</p>
     </section>
 
     <section>
       <h2>Site Purpose</h2>
-      <p>The website will introduce Jerry Heller and High Desert Development as a dependable full-service contractor. It will explain the company’s utility, concrete, masonry, framing, new construction, and remodeling services; share its values and experience; display completed work through project photos and videos; and provide a contact form so property owners can ask questions or request an estimate.</p>
-      <p>The completed website is planned to include Home, About Us, Portfolio, Services, and Contact Us pages.</p>
+      <p>The website introduces Jerry Heller and High Desert Development as an experienced, client-focused general contractor. Established in 1999, the company serves residential and commercial clients with construction, remodeling, concrete, framing, utility, septic, sewer, and site-preparation work.</p>
+      <p>The site helps visitors understand the company’s capabilities, view representative project photographs, learn about Jerry’s approach to planning and communication, watch a virtual project tour, and submit details about a potential project.</p>
+      <p>The assignment website includes Home, About, Contact, and References pages. Services and featured project work are presented as major sections on the Home page.</p>
     </section>
 
     <section>
       <h2>Scenarios</h2>
       <ul>
-        <li>Can High Desert Development handle both the utility work and construction involved in my project?</li>
-        <li>Where can I see examples of the contractor’s completed work and workmanship?</li>
-        <li>How can I contact the company to discuss my project and request an estimate?</li>
+        <li>Can High Desert Development coordinate the utility, site, concrete, and construction work involved in my project?</li>
+        <li>Where can I see examples of the company’s residential, commercial, concrete, septic, sewer, and remodeling work?</li>
+        <li>Who is Jerry Heller, and what experience does he bring to my project?</li>
+        <li>How can I contact the company and submit the details of a project inquiry?</li>
       </ul>
     </section>
 
     <section>
-      <h2>Planned Content</h2>
-      <p><strong>Company representative:</strong> Jerry Heller</p>
-      <p>The Services page will organize the company’s capabilities into clear groups:</p>
+      <h2>Content and Page Structure</h2>
+      <p><strong>Company representative:</strong> Jerry Heller, a general contractor with more than 30 years of construction experience.</p>
       <ul>
-        <li><strong>Underground utilities:</strong> installation of 8-, 10-, and 12-inch water mains, fire mains and hydrants, main sewer line taps, septic systems, deep wells, and seepage pits</li>
-        <li><strong>Concrete and masonry:</strong> residential and commercial concrete design-build work, custom concrete stamping, and residential and commercial block walls</li>
-        <li><strong>Construction:</strong> commercial build-outs, commercial and residential wood framing, new custom homes, pool houses, and other custom structures</li>
-        <li><strong>Remodeling:</strong> bathroom remodels and custom shower installation</li>
+        <li><strong>Home:</strong> company introduction, responsive hero image, six photograph-based service links, a featured project, virtual-tour link, and contact call to action</li>
+        <li><strong>About:</strong> company history, Jerry Heller’s background, client-focused values, communication approach, planning practices, and connection to the High Desert</li>
+        <li><strong>Contact:</strong> verified telephone and email links plus a project-inquiry form for the visitor’s name, email, telephone, service, location, and project details</li>
+        <li><strong>References:</strong> citations for company information, project media, the official logo, fonts, and the virtual tour</li>
       </ul>
-      <p>The Portfolio page will use optimized project photos and videos, including a <a href="https://www.youtube.com/watch?v=r4w5-RH4bVs">virtual project tour on YouTube</a>. Final project images will be selected and added during site development.</p>
+    </section>
+
+    <section>
+      <h2>Service Categories</h2>
+      <p>The Home page organizes the company’s capabilities into six visual categories. Each card uses a representative project photograph and leads visitors toward related work.</p>
+      <ul>
+        <li><strong>Underground utilities:</strong> C-900 water mains, fire mains, hydrants, deep wells, seepage pits, dirt work, and backhoe work</li>
+        <li><strong>Sewer and septic:</strong> main sewer-line taps, trenching, plumbing, and 1,000–1,500-gallon septic-system installations</li>
+        <li><strong>Concrete and masonry:</strong> residential and commercial design-build concrete, custom stamping, patios, walkways, and block walls</li>
+        <li><strong>Commercial construction:</strong> commercial build-outs, storage facilities, and commercial wood framing</li>
+        <li><strong>Custom residential construction:</strong> residential framing, custom homes, pool houses, and accessory dwelling units</li>
+        <li><strong>Remodeling:</strong> bathroom remodeling, custom showers, fireplaces, and interior improvements</li>
+      </ul>
+      <p>Additional capabilities mentioned by the company include a 2,000-gallon water truck for construction, landscaping, and water-delivery needs.</p>
+    </section>
+
+    <section>
+      <h2>Dynamic Functionality</h2>
+      <p>JavaScript provides the responsive navigation behavior, remembers the last service category selected by a visitor, preselects that category on the inquiry form, saves a local copy of the inquiry, and displays submission feedback.</p>
+      <p>The implementation demonstrates multiple functions, DOM selection and modification, event listeners, conditional branching, objects, arrays and array methods, template literals, and <code>localStorage</code>.</p>
     </section>
 
     <section>
       <h2>Color Schema</h2>
-      <p>The palette combines dependable navy with warm bronze and desert-inspired neutrals. It is intended to communicate trust, skilled work, and understated luxury.</p>
+      <p>The palette combines dependable navy with warm bronze and desert-inspired neutrals. It communicates trust, skilled work, and understated quality.</p>
       <div class="swatches">
-        <article class="swatch navy">
-          <h3>Deep Navy</h3>
-          <p>#18324A</p>
-          <p>Primary headings, header, footer, and strong brand elements</p>
-        </article>
-        <article class="swatch bronze">
-          <h3>Warm Bronze</h3>
-          <p>#A66A2C</p>
-          <p>Accent borders, buttons, links, and calls to action</p>
-        </article>
-        <article class="swatch sand">
-          <h3>Desert Sand</h3>
-          <p>#D8C3A5</p>
-          <p>Secondary backgrounds and decorative details</p>
-        </article>
-        <article class="swatch ivory">
-          <h3>Warm Ivory</h3>
-          <p>#F7F4EE</p>
-          <p>Main page background and light content areas</p>
-        </article>
-        <article class="swatch charcoal">
-          <h3>Charcoal</h3>
-          <p>#292D32</p>
-          <p>Body text for comfortable reading</p>
-        </article>
+        <article class="swatch navy"><h3>Deep Navy</h3><p>#18324A</p><p>Headings, header, footer, and strong brand elements</p></article>
+        <article class="swatch bronze"><h3>Warm Bronze</h3><p>#A66A2C</p><p>Buttons, links, borders, and calls to action</p></article>
+        <article class="swatch sand"><h3>Desert Sand</h3><p>#D8C3A5</p><p>Secondary backgrounds and decorative details</p></article>
+        <article class="swatch ivory"><h3>Warm Ivory</h3><p>#F7F4EE</p><p>Main page background and light content areas</p></article>
+        <article class="swatch charcoal"><h3>Charcoal</h3><p>#292D32</p><p>Body text for comfortable reading</p></article>
       </div>
     </section>
 
     <section>
       <h2>Typography</h2>
       <div class="type-samples">
-        <article>
-          <h3 class="montserrat">Montserrat</h3>
-          <p>Montserrat will be used for the logo, navigation, headings, buttons, and short labels. Its strong geometric letterforms support a confident construction brand.</p>
-        </article>
-        <article>
-          <h3 class="open-sans">Open Sans</h3>
-          <p>Open Sans will be used for paragraphs, lists, forms, and longer descriptions because it remains clear and readable at many screen sizes.</p>
-        </article>
+        <article><h3 class="montserrat">Montserrat</h3><p>Montserrat is used for navigation, headings, buttons, and short labels. Its strong geometric letterforms support a confident construction brand.</p></article>
+        <article><h3 class="open-sans">Open Sans</h3><p>Open Sans is used for paragraphs, lists, forms, and longer descriptions because it remains clear and readable at many screen sizes.</p></article>
       </div>
     </section>
 
     <section>
       <h2>Wireframes</h2>
-      <p>The following wireframes show the planned layout of the home page. The final images and wording may change during development.</p>
+      <p>These wireframes reflect the implemented Home page structure. The responsive design rearranges the same content for mobile and larger screens.</p>
       <div class="wireframe-layout">
         <article>
           <h3>Mobile View</h3>
-          <div class="wireframe mobile-wireframe" role="img" aria-label="Mobile home page wireframe">
-            <div class="wf-box wf-header">Logo <span>☰</span></div>
-            <div class="wf-box wf-hero">Hero Image<br><strong>Trusted Craftsmanship</strong><br>[ Request an Estimate ]</div>
-            <div class="wf-box">Introduction / Why Choose Us</div>
-            <div class="wf-box">Featured Services<br>Service Cards</div>
-            <div class="wf-box">Featured Project Image</div>
-            <div class="wf-box">Portfolio Call to Action</div>
-            <div class="wf-box">Testimonial / Trust Message</div>
-            <div class="wf-box wf-footer">Contact Information<br>Footer</div>
+          <div class="wireframe mobile-wireframe" role="img" aria-label="Mobile home page wireframe with logo, menu, hero, service cards, featured work, contact call to action, and footer">
+            <div class="wf-box wf-header">Official Logo <span>☰</span></div>
+            <div class="wf-box wf-hero">Hero Project Image<br><strong>Built with integrity</strong><br>[ Discuss Your Project ]</div>
+            <div class="wf-box">Company Introduction</div>
+            <div class="wf-box">Six Stacked Photo Service Cards</div>
+            <div class="wf-box">Featured Concrete Project</div>
+            <div class="wf-box">Virtual Tour Link</div>
+            <div class="wf-box">Contact Call to Action</div>
+            <div class="wf-box wf-footer">Navigation • References<br>© 2026 Company Footer</div>
           </div>
         </article>
 
         <article>
           <h3>Desktop View</h3>
-          <div class="wireframe desktop-wireframe" role="img" aria-label="Desktop home page wireframe">
-            <div class="wf-box wf-header">Logo <span>Home &nbsp; About &nbsp; Portfolio &nbsp; Services &nbsp; Contact</span></div>
-            <div class="wf-box wf-hero">Full-Width Hero Image<br><strong>Trusted Craftsmanship for Every Project</strong><br>[ Request an Estimate ]</div>
-            <div class="wf-two-column">
-              <div class="wf-box">Introduction / Why Choose Us</div>
-              <div class="wf-box">Supporting Image</div>
-            </div>
-            <div class="wf-box">Featured Services: [ Card ] [ Card ] [ Card ]</div>
-            <div class="wf-two-column">
-              <div class="wf-box">Featured Project Image / Video</div>
-              <div class="wf-box">Portfolio Description<br>[ View Our Work ]</div>
-            </div>
-            <div class="wf-box">Testimonial / Trust Message</div>
-            <div class="wf-box wf-footer">Contact Information &nbsp; | &nbsp; Navigation &nbsp; | &nbsp; Footer</div>
+          <div class="wireframe desktop-wireframe" role="img" aria-label="Desktop home page wireframe with horizontal navigation, hero, three-column service grid, featured work, contact call to action, and footer">
+            <div class="wf-box wf-header">Official Logo <span>Home &nbsp; Services &nbsp; Our Work &nbsp; About &nbsp; Contact</span></div>
+            <div class="wf-box wf-hero">Full-Width Project Image<br><strong>Built with integrity. Finished with distinction.</strong><br>[ Discuss Your Project ] [ Explore Services ]</div>
+            <div class="wf-two-column"><div class="wf-box">Company Introduction</div><div class="wf-box">Experience and Capabilities</div></div>
+            <div class="wf-box">Photo Service Grid: [ Card ] [ Card ] [ Card ]<br>[ Card ] [ Card ] [ Card ]</div>
+            <div class="wf-two-column"><div class="wf-box">Featured Concrete Project Image</div><div class="wf-box">Project Description<br>[ Watch Virtual Tour ]</div></div>
+            <div class="wf-box">Contact Call to Action</div>
+            <div class="wf-box wf-footer">Navigation &nbsp; | &nbsp; References &nbsp; | &nbsp; Social Links &nbsp; | &nbsp; © 2026</div>
           </div>
         </article>
       </div>
     </section>
   </main>
 
-  <footer>
-    <p>High Desert Development Website Plan</p>
-  </footer>
+  <footer><p>High Desert Development Website Plan</p></footer>
 </body>
 </html>
