@@ -1,19 +1,23 @@
+document.documentElement.classList.add('js');
+
 const menuButton = document.querySelector('.menu-button');
 const navigation = document.querySelector('#primary-navigation');
 const serviceCards = document.querySelectorAll('.service-card');
 const projectForm = document.querySelector('#project-form');
 const dateTimeElements = document.querySelectorAll('.current-datetime');
 
-function toggleMenu() {
-  const isOpen = navigation.classList.toggle('open');
+function setMenuState(isOpen) {
+  navigation.classList.toggle('open', isOpen);
   menuButton.setAttribute('aria-expanded', `${isOpen}`);
   menuButton.querySelector('.menu-label').textContent = `${isOpen ? 'Close' : 'Menu'}`;
 }
 
+function toggleMenu() {
+  setMenuState(!navigation.classList.contains('open'));
+}
+
 function closeMenu() {
-  navigation.classList.remove('open');
-  menuButton.setAttribute('aria-expanded', `${false}`);
-  menuButton.querySelector('.menu-label').textContent = `Menu`;
+  setMenuState(false);
 }
 
 function rememberService(category) {
@@ -39,6 +43,13 @@ function updateCurrentDateTime() {
 
 if (menuButton && navigation) {
   menuButton.addEventListener('click', toggleMenu);
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && navigation.classList.contains('open')) {
+      closeMenu();
+      menuButton.focus();
+    }
+  });
 
   navigation.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', closeMenu);
